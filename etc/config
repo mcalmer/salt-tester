@@ -1,0 +1,23 @@
+SALT_ROOT="/tmp/salt"
+
+# Pick environment
+if [ -z $TESTER_USER ]; then
+   USER=$(whoami)
+else
+   USER=$TESTER_USER
+fi
+
+if [ -z $TESTER_HOST ]; then
+   HOST=$(hostname -f)
+else
+   HOST=$TESTER_HOST
+fi
+
+if [ -z $TESTER_OUTPUT ]; then
+   OUTPUT_MODE="all"
+else
+   OUTPUT_MODE=$TESTER_OUTPUT
+fi
+
+SALT_KEY_CMD="salt-key -c $SALT_ROOT"
+SALT_CALL="salt -l debug -c $SALT_ROOT $HOST"
