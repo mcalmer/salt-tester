@@ -23,7 +23,7 @@ if [ $($SALT_CALL grains.get os_family | sed -e 's/.*:[ ]*//g') != "Suse" ]; the
 fi
 
 # Run tests
-for TEST_CASE in $(cat etc/progression); do
+for TEST_CASE in $(cat etc/progression | grep -v '^#'); do
     echo "------------------------------------------------[$TEST_CASE]"
     if [ $OUTPUT_MODE == "sparse" ]; then
 	tests/$TEST_CASE > /dev/null
