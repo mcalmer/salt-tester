@@ -9,6 +9,6 @@ CMD="test.ping"
 INFO="Ping!"
 
 # Tell what you want to do
-declare "\${CMD}" "\${INFO}"
+describe "\${CMD}" "\${INFO}"
 
 $SALT_CALL $CMD || false

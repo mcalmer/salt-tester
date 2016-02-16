@@ -9,7 +9,7 @@ CMD="--version"
 INFO="Call $CMD on each command that supposed to be installed"
 
 # Tell what you want to do
-declare "\${CMD}" "\${INFO}"
+describe "\${CMD}" "\${INFO}"
 
 read -d '' COMPONENTS <<EOF
 salt-api

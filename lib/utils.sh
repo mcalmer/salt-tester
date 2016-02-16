@@ -1,7 +1,7 @@
 #
 # Declare test case
 #
-function declare {
+function describe {
     eval CMD="$1"
     eval NFO="$2"
     cat <<EOF >&2

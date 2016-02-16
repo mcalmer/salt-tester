@@ -9,7 +9,7 @@ CMD="grains.get cpuarch"
 INFO="Find out x86_64 architecture in grains."
 
 # Tell what you want to do
-declare "\${CMD}" "\${INFO}"
+describe "\${CMD}" "\${INFO}"
 
 # Run the test
 $SALT_CALL $CMD | grep x86_64 || false
