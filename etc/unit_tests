@@ -1,0 +1,435 @@
+# unit.auth_test
+# unit.beacons.inotify_beacon_test
+# unit.cli.batch_test
+# unit.client_test
+# unit.cloud.clouds/linode_test
+# unit.cloud.clouds/saltify_test
+# unit.cloud.clouds/vmware_test
+# unit.config_test
+# unit.crypt_test
+# unit.files_test
+# unit.highstateconf_test
+# unit.log_test
+# unit.minion_test
+# unit.version_test
+# unit.pydsl_test
+# unit.pyobjects_test
+# unit.payload_test
+# unit.returners.smtp_return_test
+# unit.runners.cache_test
+# unit.serializers.serializers_test
+# unit.stateconf_test
+
+# unit.modules.aliases_test
+# unit.modules.alternatives_test
+# unit.modules.apache_test
+# unit.modules.archive_test
+# unit.modules.artifactory_test
+# unit.modules.at_test
+# unit.modules.augeas_cfg_test
+# unit.modules.blockdev_test
+# unit.modules.bluez_test
+# unit.modules.boto_elb_test
+# unit.modules.boto_secgroup_test
+# unit.modules.boto_vpc_test
+# unit.modules.bower_test
+# unit.modules.brew_test
+# unit.modules.bridge_test
+unit.modules.btrfs_test
+# unit.modules.cassandra_test
+# unit.modules.chef_test
+# unit.modules.cmdmod_test
+# unit.modules.composer_test
+# unit.modules.config_test
+# unit.modules.cpan_test
+# unit.modules.cp_test
+# unit.modules.cron_test                   # Broken
+# unit.modules.cyg_test
+# unit.modules.daemontools_test
+# unit.modules.darwin_pkgutil_test
+# unit.modules.darwin_sysctl_test
+# unit.modules.data_test
+# unit.modules.ddns_test
+# unit.modules.deb_apache_test
+# unit.modules.debconfmod_test
+# unit.modules.debian_ip_test
+# unit.modules.debian_service_test
+# unit.modules.deb_postgres_test
+# unit.modules.defaults_test
+# unit.modules.devmap_test
+# unit.modules.dig_test
+# unit.modules.disk_test
+# unit.modules.djangomod_test
+# unit.modules.dnsmasq_test
+# unit.modules.dnsutil_test
+# unit.modules.dockerio_test
+# unit.modules.dockerng_test
+# unit.modules.dpkg_test
+# unit.modules.drac_test
+# unit.modules.drbd_test
+# unit.modules.environ_test
+# unit.modules.etcd_mod_test
+# unit.modules.event_test
+unit.modules.extfs_test
+unit.modules.file_test
+# unit.modules.firewalld_test
+# unit.modules.gem_test
+# unit.modules.genesis_test
+# unit.modules.git_test
+# unit.modules.glusterfs_test
+# unit.modules.gnomedesktop_test
+# unit.modules.gpg_test
+unit.modules.grains_test
+# unit.modules.groupadd_test
+# unit.modules.grub_legacy_test
+# unit.modules.guestfs_test
+# unit.modules.hadoop_test
+# unit.modules.haproxyconn_test
+# unit.modules.hashutil_test
+# unit.modules.hg_test
+# unit.modules.hipchat_test
+# unit.modules.hosts_test
+# unit.modules.htpasswd_test
+# unit.modules.http_test
+# unit.modules.ilo_test
+# unit.modules.img_test
+# unit.modules.incron_test
+# unit.modules.influx_test
+# unit.modules.ini_manage_test
+# unit.modules.introspect_test
+# unit.modules.ipset_test
+# unit.modules.iptables_test
+# unit.modules.jboss7_cli_test
+# unit.modules.jboss7_test
+# unit.modules.keyboard_test
+# unit.modules.keystone_test
+unit.modules.key_test
+# unit.modules.kmod_test
+# unit.modules.launchctl_test
+# unit.modules.ldapmod_test
+unit.modules.linux_acl_test
+unit.modules.linux_lvm_test
+# unit.modules.linux_sysctl_test             # Broken
+# unit.modules.localemod_test
+# unit.modules.locate_test
+# unit.modules.logadm_test
+# unit.modules.logrotate_test
+# unit.modules.lvs_test
+# unit.modules.mac_group_test
+# unit.modules.mac_user_test
+# unit.modules.match_test
+# unit.modules.mdadm_test
+# unit.modules.memcached_test
+# unit.modules.mine_test
+# unit.modules.modjk_test
+# unit.modules.mod_random_test
+# unit.modules.monit_test
+# unit.modules.moosefs_test
+# unit.modules.mount_test                    # Broken
+# unit.modules.munin_test
+# unit.modules.mysql_test
+unit.modules.nagios_test
+unit.modules.netscaler_test
+unit.modules.network_test
+# unit.modules.neutron_test
+# unit.modules.nfs3_test
+# unit.modules.nftables_test
+# unit.modules.nginx_test
+# unit.modules.nova_test
+# unit.modules.npm_test
+# unit.modules.openstack_config_test
+# unit.modules.oracle_test
+# unit.modules.osxdesktop_test
+# unit.modules.pagerduty_test
+unit.modules.pam_test
+# unit.modules.parted_test
+# unit.modules.pecl_test
+unit.modules.pillar_test
+# unit.modules.pip_test
+unit.modules.pkg_resource_test
+unit.modules.pkgutil_test
+# unit.modules.postfix_test
+# unit.modules.postgres_test
+# unit.modules.poudriere_test
+# unit.modules.powerpath_test
+# unit.modules.ps_test
+# unit.modules.publish_test
+# unit.modules.puppet_test
+# unit.modules.pw_group_test
+# unit.modules.pw_user_test
+# unit.modules.pyenv_test
+# unit.modules.qemu_img_test
+# unit.modules.qemu_nbd_test
+# unit.modules.rabbitmq_test
+# unit.modules.raet_publish_test
+# unit.modules.random_org_test
+# unit.modules.rbenv_test
+# unit.modules.rdp_test
+# unit.modules.redismod_test
+# unit.modules.ret_test
+# unit.modules.rh_ip_test
+# unit.modules.rh_service_test
+# unit.modules.riak_test
+unit.modules.rpm_test
+# unit.modules.rsync_test
+# unit.modules.runit_test
+# unit.modules.rvm_test
+# unit.modules.s3_test
+# unit.modules.saltcloudmod_test
+# unit.modules.schedule_test
+# unit.modules.scsi_test
+# unit.modules.sdb_test
+# unit.modules.seed_test
+# unit.modules.sensors_test
+# unit.modules.serverdensity_device_test
+unit.modules.service_test
+# unit.modules.shadow_test
+# unit.modules.slack_notify_test
+# unit.modules.smf_test
+# unit.modules.smtp_test
+# unit.modules.solr_test
+# unit.modules.sqlite3_test
+unit.modules.ssh_test
+unit.modules.state_test
+unit.modules.status_test
+# unit.modules.supervisord_test
+# unit.modules.svn_test
+# unit.modules.swift_test
+# unit.modules.sysbench_test
+# unit.modules.syslog_ng_test
+unit.modules.sysmod_test
+unit.modules.systemd_test
+unit.modules.system_test
+unit.modules.test_network
+# unit.modules.timezone_test
+# unit.modules.tls_test
+# unit.modules.twilio_notify_test
+unit.modules.uptime_test
+# unit.modules.useradd_test                  # Broken
+# unit.modules.uwsgi_test
+# unit.modules.varnish_test
+# unit.modules.virt_test
+# unit.modules.virtualenv_test
+# unit.modules.vsphere_test
+# unit.modules.win_autoruns_test
+# unit.modules.win_disk_test
+# unit.modules.win_dns_client_test
+# unit.modules.win_firewall_test
+# unit.modules.win_groupadd_test
+# unit.modules.win_ip_test
+# unit.modules.win_network_test
+# unit.modules.win_ntp_test
+# unit.modules.win_path_test
+# unit.modules.win_powercfg_test
+# unit.modules.win_servermanager_test
+# unit.modules.win_service_test
+# unit.modules.win_shadow_test
+# unit.modules.win_status_test
+# unit.modules.win_system_test
+# unit.modules.win_timezone_test
+# unit.modules.xapi_test
+# unit.modules.zcbuildout_test
+# unit.modules.zfs_test
+# unit.modules.znc_test
+# unit.modules.zpool_test
+
+unit.netapi.rest_cherrypy.tools_test
+unit.netapi.rest_tornado.test_handlers
+# unit.netapi.rest_tornado.test_utils        # Broken
+
+# unit.pillar.consul_test
+# unit.pillar.git_test
+# unit.pillar.hg_test
+# unit.pillar.mysql_test
+# unit.pillar.sqlite3_test
+unit.pillar_test
+
+# unit.renderers.gpg_test
+# unit.renderers.yamlex_test
+
+# unit.states.alias_test
+# unit.states.alternatives_test
+# unit.states.apache_module_test
+# unit.states.apache_test
+# unit.states.apt_test
+# unit.states.archive_test
+# unit.states.artifactory_test
+# unit.states.at_test
+# unit.states.augeas_test
+# unit.states.aws_sqs_test
+# unit.states.blockdev_test
+# unit.states.boto_asg_test
+# unit.states.boto_cloudwatch_alarm_test
+# unit.states.boto_dynamodb_test
+# unit.states.boto_ec2_test
+# unit.states.boto_elasticache_test
+# unit.states.boto_elb_test
+# unit.states.boto_iam_role_test
+# unit.states.boto_lc_test
+# unit.states.boto_route53_test
+# unit.states.boto_sns_test
+# unit.states.boto_sqs_test
+# unit.states.boto_vpc_test
+# unit.states.bower_test
+# unit.states.chef_test
+# unit.states.cloud_test
+# unit.states.cmd_test
+# unit.states.composer_test
+# unit.states.cron_test
+# unit.states.cyg_test
+# unit.states.ddns_test
+# unit.states.debconfmod_test
+# unit.states.disk_test
+# unit.states.dockerng_test
+# unit.states.drac_test
+# unit.states.environ_test
+# unit.states.eselect_test
+# unit.states.event_test
+# unit.states.file_test
+# unit.states.gem_test
+# unit.states.glusterfs_test
+# unit.states.gnomedesktop_test
+# unit.states.grafana_test
+# unit.states.grains_test
+# unit.states.group_test
+# unit.states.hg_test
+# unit.states.hipchat_test
+# unit.states.host_test
+# unit.states.htpasswd_test
+# unit.states.http_test
+# unit.states.incron_test
+# unit.states.influxdb_database_test
+# unit.states.influxdb_user_test
+# unit.states.ini_manage_test
+# unit.states.ipmi_test
+# unit.states.ipset_test
+# unit.states.iptables_test
+# unit.states.jboss7_test
+# unit.states.keyboard_test
+# unit.states.keystone_test
+# unit.states.kmod_test
+# unit.states.layman_test
+# unit.states.libvirt_test
+# unit.states.linux_acl_test
+# unit.states.locale_test
+# unit.states.lvm_test
+# unit.states.lvs_server_test
+# unit.states.lvs_service_test
+# unit.states.lxc_test
+# unit.states.makeconf_test
+# unit.states.mdadm_test
+# unit.states.memcached_test
+# unit.states.modjk_test
+# unit.states.modjk_worker_test
+# unit.states.module_test
+# unit.states.mongodb_database_test
+# unit.states.mongodb_user_test
+# unit.states.mount_test
+# unit.states.mysql_grants_test
+# unit.states.mysql_query_test
+# unit.states.mysql_user_test
+# unit.states.network_test
+# unit.states.nftables_test
+# unit.states.npm_test
+# unit.states.ntp_test
+# unit.states.openstack_config_test
+# unit.states.pagerduty_test
+# unit.states.pecl_test
+# unit.states.pip_test
+# unit.states.pkgng_test
+# unit.states.portage_config_test
+# unit.states.ports_test
+# unit.states.postgres_database_test
+# unit.states.postgres_extension_test
+# unit.states.postgres_group_test
+# unit.states.postgres_schema_test
+# unit.states.postgres_test
+# unit.states.postgres_user_test
+# unit.states.powerpath_test
+# unit.states.process_test
+# unit.states.pyenv_test
+# unit.states.pyrax_queues_test
+# unit.states.quota_test
+# unit.states.rabbitmq_cluster_test
+# unit.states.rabbitmq_plugin_test
+# unit.states.rabbitmq_policy_test
+# unit.states.rabbitmq_user_test
+# unit.states.rabbitmq_vhost_test
+# unit.states.rbenv_test
+# unit.states.rdp_test
+# unit.states.redismod_test
+# unit.states.reg_test
+# unit.states.rvm_test
+# unit.states.saltmod_test
+# unit.states.schedule_test
+# unit.states.selinux_test
+# unit.states.serverdensity_device_test
+# unit.states.service_test
+# unit.states.slack_test
+# unit.states.smtp_test
+# unit.states.splunk_search_test
+# unit.states.ssh_auth_test
+# unit.states.ssh_known_hosts_test
+unit.states.status_test
+# unit.states.supervisord_test
+# unit.states.svn_test
+# unit.states.sysctl_test
+# unit.states.syslog_ng_test
+# unit.states.sysrc_test
+# unit.states.test_test
+# unit.states.timezone_test
+# unit.states.tomcat_test
+# unit.states.user_test
+# unit.states.vbox_guest_test
+# unit.states.virtualenv_mod_test
+# unit.states.win_dns_client_test
+# unit.states.win_firewall_test
+# unit.states.win_network_test
+# unit.states.win_path_test
+# unit.states.win_powercfg_test
+# unit.states.winrepo_test
+# unit.states.win_servermanager_test
+# unit.states.win_system_test
+# unit.states.win_update_test
+# unit.states.xmpp_test
+# unit.states.zcbuildout_test
+# unit.states.zk_concurrency_test
+
+# unit.templates.jinja_test
+# unit.template_test
+
+unit.transport.ipc_test
+# unit.transport.pub_test                    # Empty
+# unit.transport.req_test                    # Empty
+unit.transport.tcp_test
+unit.transport.zeromq_test
+
+unit.utils.aggregation_test
+unit.utils.async_test
+# unit.utils.boto_test
+unit.utils.cache_test
+# unit.utils.cloud_test
+# unit.utils.configcomparer_test
+unit.utils.config_test
+unit.utils.context_test
+unit.utils.dictupdate_test
+# unit.utils.event_test                      # Hangs forever
+unit.utils.filebuffer_test
+unit.utils.find_test
+unit.utils.format_call_test
+unit.utils.http_test
+unit.utils.kwarg_regex_test
+unit.utils.locales_test
+unit.utils.path_join_test
+unit.utils.process_test
+# unit.utils.rsax931_test
+unit.utils.runtime_whitespace_regex_test
+unit.utils.safe_walk_test
+unit.utils.schedule_test
+unit.utils.url_test
+# unit.utils.utils_test                      # Broken
+unit.utils.validate_net_test
+unit.utils.verify_test
+unit.utils.vt_test
+unit.utils.warnings_test
+unit.utils.which_test

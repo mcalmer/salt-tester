@@ -11,3 +11,21 @@ Testing: $CMD
 
 EOF
 }
+
+
+#
+# Tell why we are skipping the tests
+#
+function skip_tests {
+    eval REASON="$1"
+cat <<EOF >&2
+
+    *********************************
+              TEST SKIPPED
+    ---------------------------------
+    Reason:
+    $REASON
+    *********************************
+
+EOF
+}
