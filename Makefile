@@ -17,4 +17,4 @@ install:
 	zypper --non-interactive in salt-minion
 	zypper --non-interactive in --oldpackage test-package=42:0.0
 	# deps for unit tests
-	zypper --non-interactive in python-boto python-mock python-moto python-pip python-salt-testing python-unittest2 python-xml
+	zypper --non-interactive in python-mock python-pip python-salt-testing python-unittest2
