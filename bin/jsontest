@@ -20,6 +20,7 @@ class JSONTester(object):
             int: "an Integer type", unicode: "a Unicode type",
             bool: "a Boolean type", list: "a List type", float: "a Float type"
         }
+        self.exit_code = 0
 
 
     def _error(self, msg):
@@ -27,6 +28,7 @@ class JSONTester(object):
         Report to the STDERR message.
         '''
         print >> sys.stderr, "Error:", msg
+        self.exit_code = 1
 
 
     def _test_get_path(self):
@@ -83,8 +85,7 @@ class JSONTester(object):
         self._test_value_type(obj)
         self._test_value_content(obj)
 
-
-        return 0
+        return self.exit_code
 
 
 def get_directives():
