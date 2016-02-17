@@ -2,6 +2,14 @@
 
 source etc/config
 
+sleep 2
+for x in 1 2 3 4 5 6 7 8 9 0; do
+    if salt-key -L | grep "$HOST"; then
+        break
+    fi
+    sleep 2
+done
+
 echo "Running tests as $USER"
 
 # Test minion key. This is the main test, which required
@@ -15,6 +23,14 @@ else
     $SALT_KEY_CMD --list-all
     echo "Minion Test Key passed"
 fi
+
+sleep 2
+for x in 1 2 3 4 5 6 7 8 9 0; do
+    if salt "$HOST" test.ping | grep -i "true"; then
+        break
+    fi
+    sleep 2
+done
 
 # XXX: This sucks to the level 99. Force "SUSE" distro, in case we are in OBS
 if [ $($SALT_CALL grains.get os_family | sed -e 's/.*:[ ]*//g') != "Suse" ]; then

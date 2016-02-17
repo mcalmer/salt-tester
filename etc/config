@@ -8,7 +8,7 @@ else
 fi
 
 if [ -z $TESTER_HOST ]; then
-   HOST=$(hostname -f)
+   HOST=$(uname -n)
 else
    HOST=$TESTER_HOST
 fi
