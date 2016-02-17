@@ -1,0 +1,147 @@
+#!/usr/bin/python
+#
+# Validate JSON.
+# Author: bo@suse.de
+#
+
+import sys
+import os
+import json
+
+
+class JSONTester(object):
+    '''
+    Simple tool to test JSON values.
+    '''
+    def __init__(self, directives):
+        self.directives = directives
+        self.data = None
+        self.typedescr = {
+            int: "an Integer type", unicode: "a Unicode type",
+            bool: "a Boolean type", list: "a List type", float: "a Float type"
+        }
+
+
+    def _error(self, msg):
+        '''
+        Report to the STDERR message.
+        '''
+        print >> sys.stderr, "Error:", msg
+
+
+    def _test_get_path(self):
+        '''
+        Test if the path is accessible.
+        '''
+        buff = self.data.copy()
+        for node in self.directives['path']:
+            if buff is not None:
+                buff = buff.get(node)
+
+        try:
+            assert buff is not None
+        except AssertionError as err:
+            self._error("Path '/{0}' is not accessible".format(
+                "/".join(self.directives['path'])))
+
+        return buff
+
+
+    def _test_value_type(self, obj):
+        '''
+        Test if target object is of expected type
+        '''
+        try:
+            assert type(obj) == self.directives['type']
+        except AssertionError as err:
+            self._error("Object '{0}' has value of '{1}' and is not {2} as expected".format(
+                self.directives['path'][-1], obj,
+                self.typedescr[self.directives['type']])
+            )
+
+
+    def _test_value_content(self, obj):
+        '''
+        Test if target object has the same value as expected
+        '''
+        try:
+            assert self.directives['type'](obj) == self.directives['value']
+        except AssertionError as err:
+            self._error("Object '{0}' is of {1} but does not "
+                        "have expected value '{2}', containing '{3}' instead)".format(
+                self.directives['path'][-1], self.typedescr[self.directives['type']],
+                self.directives['value'], obj)
+            )
+
+
+    def validate(self, data):
+        '''
+        Validate JSON data.
+        '''
+        self.data = data
+        obj = self._test_get_path()
+        self._test_value_type(obj)
+        self._test_value_content(obj)
+
+
+        return 0
+
+
+def get_directives():
+    '''
+    Get directives from the CLI
+    '''
+    if not len(sys.argv[1:]):
+        usage()
+        sys.exit(1)
+
+    types = {'b': bool, 'i': int, 'f': float, 's': unicode, 'u': unicode, 'l': list}
+
+    # Parse dirmap
+    dirmap = {'path': list(), 'value': None, 'type': None}
+    for directive in sys.argv[1:]:
+        if '=' not in directive:
+            continue
+        key, value = directive.split('=', 1)
+        if key == 'path':
+            dirmap[key].append(value)
+        elif key == 'type':
+            dirmap[key] = types.get(value)
+        else:
+            try:
+                dirmap[key] = dirmap['type'](value)
+            except Exception as err:
+                dirmap[key] = ''
+
+    return dirmap
+
+
+def usage():
+    '''
+    Usage of this tool.
+    '''
+    print """
+Usage: [STDIN] jsontest [DIRECTIVE] <DIRECTIVE..>
+
+Directives:
+\tpath\tPath to the object.
+\ttype\tType of the value: (b)ool, (i)nt, (f)loat, (s)tring, (l)ist
+\tvalue\tValue of the target object
+\tcontains\tContains a value
+
+Example:
+\tpath={"foo","bar"} type=b value=true
+\tpath={"tea","cup"} type=i value=1
+\tpath={"my","list"} type=l contains=something
+"""
+
+
+def main():
+    '''
+    Main.
+    '''
+    sys.exit(JSONTester(get_directives()).validate(
+        json.loads(os.linesep.join([line for line in sys.stdin]))))
+
+if __name__ == '__main__':
+    main()
