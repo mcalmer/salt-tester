@@ -29,5 +29,3 @@ EOF
 
 salt-master -c $SALT_ROOT -d
 salt-minion -c $SALT_ROOT -d
-
-sleep 10
