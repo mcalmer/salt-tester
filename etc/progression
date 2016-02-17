@@ -3,3 +3,4 @@ test_ping.sh
 test_grains.sh
 test_pkg_list.sh
 ut_suma.sh
+jenkins_tests.sh
