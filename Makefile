@@ -10,7 +10,9 @@ teardown:
 runtests:
 	bash bin/tests.sh
 
-jenkins: install setup runtests teardown
+jenkins:
+        export OUTPUT_MODE="sparse"
+        install setup runtests teardown
 
 install:
 	zypper --non-interactive in salt-master
