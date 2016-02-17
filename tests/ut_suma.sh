@@ -23,7 +23,7 @@ function ut_collect_sources {
     mkdir $SALT_ROOT/src
     SRC="/usr/src/packages"
     # Always install source RPM
-    zypper --non-interactive source-install salt
+    # zypper --non-interactive source-install salt
     if [ ! -f "$SRC/SPECS/salt.spec" ]; then
 	msg="Cannot find salt.spec file."
 	skip_tests "\${msg}"
