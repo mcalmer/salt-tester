@@ -20,7 +20,7 @@ function version_test {
 
     local RESULT=`$SALT_CALL --out text $CMD | awk -F': ' '{print $2}'`
     echo "Result: $RESULT" >&2
-    test "$RESULT" = "$expect" || ((EXITCODE++))
+    test "$RESULT" = "$expect" || { echo "failed" >&2; exit 1 }
 }
 
 version_test '0.2-1' '0.2-1' '0'
@@ -31,5 +31,3 @@ version_test '1:0.2-1' '0.2-1' '1'
 version_test '0.2-1' '0.2~beta1-1' '1'
 version_test '0.2~beta2-1' '0.2-1' '-1'
 
-test "$EXITCODE" = "0" || echo "failed" >&2
-exit $EXITCODE
