@@ -29,3 +29,13 @@ cat <<EOF >&2
 
 EOF
 }
+
+
+#
+# Terminae, if the last exit code wasn't successful
+#
+function assert_run {
+    if [ $? -ne 0 ]; then
+	exit 1
+    fi
+}
