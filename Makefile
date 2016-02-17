@@ -1,18 +1,19 @@
 all:	setup runtests teardown
 
 setup:
+	export OUTPUT_MODE="sparse"
 	bash bin/teardown.sh
 	bash bin/setup.sh
 
 teardown:
+	export OUTPUT_MODE="sparse"
 	bash bin/teardown.sh
 
 runtests:
+	export OUTPUT_MODE="sparse"
 	bash bin/tests.sh
 
-jenkins:
-	export OUTPUT_MODE="sparse"
-	install setup runtests teardown
+jenkins: install setup runtests teardown
 
 install:
 	zypper --non-interactive in salt-master
