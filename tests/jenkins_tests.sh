@@ -4,13 +4,7 @@
 source etc/config
 source lib/utils.sh
 
-if [ ! -f "/etc/zypp/repos.d/salt_test_packages.repo" ]; then
-    zypper ar http://download.opensuse.org/repositories/systemsmanagement:/saltstack:/testing:/testpackages/SLE_12/ salt_test_packages
-fi
-
-# Update repo
-sudo zypper ref salt_test_packages
-sudo zypper --non-interactive in --oldpackage test-package=42:0.0
+zypper --non-interactive in --oldpackage test-package=42:0.0
 
 # Run the tests
 
