@@ -4,4 +4,4 @@ test_grains.sh
 test_pkg_list.sh
 ut_suma.sh
 jenkins_tests.sh
-test_version_cmp.sh
+# test_version_cmp.sh
