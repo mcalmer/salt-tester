@@ -38,7 +38,12 @@ class JSONTester(object):
         buff = self.data.copy()
         for node in self.directives['path']:
             if buff is not None:
-                buff = buff.get(node)
+                if type(buff) == list:
+                    for elm_b in buff:
+                        if type(elm_b) == dict and node in elm_b:
+                            buff = elm_b.get(node)
+                else:
+                    buff = buff.get(node)
 
         try:
             assert buff is not None
