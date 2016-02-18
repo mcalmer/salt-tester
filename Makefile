@@ -1,3 +1,7 @@
+DOCKER_REGISTRY       = suma-docker-registry.suse.de
+DOCKER_MOUNTPOINT     = /salt-tester
+DOCKER_VOLUMES        = -v "$(CURDIR)/:$(DOCKER_MOUNTPOINT)"
+
 all:	setup runtests teardown
 
 setup:
@@ -21,3 +25,9 @@ install:
 	zypper --non-interactive source-install salt
 	zypper --non-interactive in --oldpackage test-package=42:0.0
 	zypper --non-interactive in rpmbuild
+
+docker_tests ::
+	docker run --rm $(DOCKER_VOLUMES) $(DOCKER_REGISTRY)/suma-head-salt make -C $(DOCKER_MOUNTPOINT) jenkins
+
+docker_shell ::
+	docker run -t -i --rm $(DOCKER_VOLUMES) $(DOCKER_REGISTRY)/suma-head-salt /bin/bash
