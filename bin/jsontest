@@ -39,9 +39,15 @@ class JSONTester(object):
         for node in self.directives['path']:
             if buff is not None:
                 if type(buff) == list:
+                    found = False
                     for elm_b in buff:
                         if type(elm_b) == dict and node in elm_b:
                             buff = elm_b.get(node)
+                            found = True
+                            break
+                    if not found:
+                        buff = None
+                        break
                 else:
                     buff = buff.get(node)
 
