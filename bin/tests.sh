@@ -4,7 +4,7 @@ source etc/config
 
 sleep 2
 for x in 1 2 3 4 5 6 7 8 9 0; do
-    if salt-key -L | grep "$HOST"; then
+    if $SALT_KEY_CMD -L | grep "$HOST"; then
         break
     fi
     sleep 2
@@ -26,7 +26,7 @@ fi
 
 sleep 2
 for x in 1 2 3 4 5 6 7 8 9 0; do
-    if salt "$HOST" test.ping | grep -i "true"; then
+    if $SALT_CALL test.ping | grep -i "true"; then
         break
     fi
     sleep 2
