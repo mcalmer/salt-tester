@@ -8,6 +8,26 @@ zypper --non-interactive in --oldpackage test-package=42:0.0
 
 # Run the tests
 
+# list updates
+CMD="pkg.list_updates"
+INFO="Check if updates are available"
+describe "\${CMD}" "\${INFO}"
+$SALT_CALL $CMD --out json | bin/jsontest \
+    path={"$HOST","test-package"} type=s value='42:0.1-4.1'
+assert_run
+
+# info_available
+CMD="pkg.info_available test-package"
+INFO="Test info_available call"
+describe "\${CMD}" "\${INFO}"
+JSONOUT=$($SALT_CALL $CMD --out json)
+echo "$JSONOUT" | bin/jsontest path={"$HOST","test-package","summary"} \
+    type=s value="Test package for Salt's pkg.info_installed"
+assert_run
+echo "$JSONOUT" | bin/jsontest path={"$HOST","test-package","status"} \
+    type=s value="out-of-date (version 42:0.0-1.1 installed)"
+assert_run
+
 # info_installed
 CMD="pkg.info_installed test-package"
 INFO="Check if pkg.info_installed works"
