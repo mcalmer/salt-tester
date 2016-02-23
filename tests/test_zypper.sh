@@ -100,6 +100,7 @@ CMD="pkg.download test-package"
 INFO="Test download"
 describe "\${CMD}" "\${INFO}"
 $SALT_CALL $CMD --out json
+assert_run
 
 # remove pkg
 CMD="pkg.remove test-package"
