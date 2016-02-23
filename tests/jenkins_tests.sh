@@ -13,7 +13,7 @@ CMD="pkg.list_updates"
 INFO="Check if updates are available"
 describe "\${CMD}" "\${INFO}"
 $SALT_CALL $CMD --out json | bin/jsontest \
-    path={"$HOST","test-package"} type=s value='42:0.1-6.1'
+    path={"$HOST","test-package"} type=s contains='42:0.1-'
 assert_run
 
 # info_available
