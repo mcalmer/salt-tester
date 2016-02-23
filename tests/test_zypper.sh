@@ -75,7 +75,7 @@ CMD="pkg.refresh_db"
 INFO="Refreshing repositories"
 describe "\${CMD}" "\${INFO}"
 $SALT_CALL $CMD --out json | bin/jsontest path={"$HOST","testpackages"} \
-    type=b value=
+    type=b value="True"
 assert_run
 
 # list patterns
@@ -99,7 +99,9 @@ assert_run
 CMD="pkg.download test-package"
 INFO="Test download"
 describe "\${CMD}" "\${INFO}"
-$SALT_CALL $CMD --out json
+$SALT_CALL $CMD --out json | bin/jsontest path={"$HOST","test-package","repository-alias"} \
+    type=s value="salt"
+assert_run
 
 # remove pkg
 CMD="pkg.remove test-package"
