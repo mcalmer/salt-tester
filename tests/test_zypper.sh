@@ -75,7 +75,7 @@ CMD="pkg.refresh_db"
 INFO="Refreshing repositories"
 describe "\${CMD}" "\${INFO}"
 $SALT_CALL $CMD --out json | bin/jsontest path={"$HOST","testpackages"} \
-    type=b value=
+    type=b value="True"
 assert_run
 
 # list patterns
