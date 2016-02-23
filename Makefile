@@ -21,7 +21,7 @@ jenkins: install setup runtests teardown
 
 install:
 	zypper --non-interactive in salt-master salt-minion
-	zypper --non-interactive source-install salt
+	zypper --non-interactive source-install -D salt
 	zypper --non-interactive in --oldpackage test-package=42:0.0
 
 docker_tests ::
