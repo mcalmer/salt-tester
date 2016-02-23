@@ -6,6 +6,7 @@
 
 import sys
 import os
+import re
 import json
 
 
@@ -78,12 +79,20 @@ class JSONTester(object):
         Test if target object has the same value as expected
         '''
         try:
-            assert self.directives['type'](obj) == self.directives['value']
+            value = self.directives['type'](obj)
+            assert value
+            if self.directives['type'] in [str, unicode]:
+                if self.directives.get('contains'):
+                    assert (value or '').find(self.directives['contains']) > -1
+                elif self.directives.get('matches'):
+                    assert re.match(self.directives['matches'], value)
+            else:
+                assert value == self.directives['value']
         except AssertionError as err:
             self._error("Object '{0}' is of {1} but does not "
                         "have expected value '{2}', containing '{3}' instead)".format(
                 self.directives['path'][-1], self.typedescr[self.directives['type']],
-                self.directives['value'], obj)
+                self.directives.get('value') or self.directives.get('contains') or self.directives.get('matches'), obj)
             )
 
 
