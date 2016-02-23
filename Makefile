@@ -20,11 +20,9 @@ runtests:
 jenkins: install setup runtests teardown
 
 install:
-	zypper --non-interactive in salt-master
-	zypper --non-interactive in salt-minion
+	zypper --non-interactive in salt-master salt-minion
 	zypper --non-interactive source-install salt
 	zypper --non-interactive in --oldpackage test-package=42:0.0
-	zypper --non-interactive in rpmbuild
 
 docker_tests ::
 	docker run --rm $(DOCKER_VOLUMES) $(DOCKER_REGISTRY)/suma-head-salt make -C $(DOCKER_MOUNTPOINT) jenkins
