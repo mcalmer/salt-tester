@@ -99,7 +99,8 @@ assert_run
 CMD="pkg.download test-package"
 INFO="Test download"
 describe "\${CMD}" "\${INFO}"
-$SALT_CALL $CMD --out json
+$SALT_CALL $CMD --out json | bin/jsontest path={"$HOST","test-package","repository-alias"} \
+    type=s value="salt"
 assert_run
 
 # remove pkg
