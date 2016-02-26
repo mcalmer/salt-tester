@@ -232,6 +232,7 @@ unit.modules.uptime_test
 # unit.modules.zfs_test
 # unit.modules.znc_test
 # unit.modules.zpool_test
+unit.modules.zypper_test
 
 unit.netapi.rest_cherrypy.tools_test
 unit.netapi.rest_tornado.test_handlers
