@@ -24,8 +24,14 @@ install:
 	zypper --non-interactive source-install -D salt
 	zypper --non-interactive in --oldpackage test-package=42:0.0
 
-docker_tests ::
-	docker run --rm $(DOCKER_VOLUMES) $(DOCKER_REGISTRY)/suma-head-salt make -C $(DOCKER_MOUNTPOINT) jenkins
+docker_tests-sle11sp4 ::
+	docker run --rm $(DOCKER_VOLUMES) $(DOCKER_REGISTRY)/salt-sle11sp4 make -C $(DOCKER_MOUNTPOINT) jenkins
 
-docker_shell ::
-	docker run -t -i --rm $(DOCKER_VOLUMES) $(DOCKER_REGISTRY)/suma-head-salt /bin/bash
+docker_tests-sle12sp1 ::
+	docker run --rm $(DOCKER_VOLUMES) $(DOCKER_REGISTRY)/salt-sle12sp1 make -C $(DOCKER_MOUNTPOINT) jenkins
+
+docker_shell-sle11sp4 ::
+	docker run -t -i --rm $(DOCKER_VOLUMES) $(DOCKER_REGISTRY)/salt-sle11sp4 /bin/bash
+
+docker_shell-sle12sp1 ::
+	docker run -t -i --rm $(DOCKER_VOLUMES) $(DOCKER_REGISTRY)/salt-sle12sp1 /bin/bash
