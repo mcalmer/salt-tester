@@ -78,5 +78,5 @@ INFO="Verify OS release"
 describe "\${CMD}" "\${INFO}"
 MAJOR=$(cat /etc/SuSE-release | grep VERSION | awk '{print $3}')
 MINOR=$(cat /etc/SuSE-release | grep PATCHLEVEL | awk '{print $3}')
-[ "2" != $($SALT_CALL $CMD --out json | grep "$MAJOR\|$MINOR" | wc -l) ]
+[ "2" == $($SALT_CALL $CMD --out json | grep -v $HOSTNAME | grep "$MAJOR\|$MINOR" | wc -l) ]
 assert_run
