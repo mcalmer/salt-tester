@@ -26,41 +26,50 @@ else
     msg="No /etc/os-release file found."
     skip_tests "\${msg}"
 fi
+source /etc/os-release
+
+# list all grains
+CMD="grains.items"
+INFO="list all grains"
+describe "\${CMD}" "\${INFO}"
+$SALT_CALL $CMD --out json
+assert_run
 
 # OS family
 CMD="grains.get os_family"
-INFO="Verify OS family"
+INFO="Verify OS family is Suse"
 describe "\${CMD}" "\${INFO}"
 $SALT_CALL $CMD --out json | bin/jsontest path=$HOST type=s contains="Suse"
 assert_run
 
 # OS code name (pretty name)
 CMD="grains.get oscodename"
-INFO="Verify OS code name (pretty name)"
+INFO="Verify OS code name (pretty name) is $PRETTY_NAME"
 describe "\${CMD}" "\${INFO}"
-$SALT_CALL $CMD --out json | bin/jsontest path=$HOST type=s contains=$(cat /etc/os-release | grep PRETTY | sed -e 's/\"//g' | sed -e 's/.*=//')
+$SALT_CALL $CMD --out json | bin/jsontest path=$HOST type=s contains=$PRETTY_NAME
 assert_run
 
 
 # OS full name
 CMD="grains.get osfullname"
-INFO="Verify OS full name"
+INFO="Verify OS full name is $NAME"
 describe "\${CMD}" "\${INFO}"
-$SALT_CALL $CMD --out json | bin/jsontest path=$HOST type=s contains=$(cat /etc/os-release | grep '^NAME' | sed -e 's/.*=//' | sed -e 's/"//g')
+$SALT_CALL $CMD --out json | bin/jsontest path=$HOST type=s contains=$NAME
 assert_run
 
 # OS architecture (not CPU arch!)
 CMD="grains.get osarch"
-INFO="Verify package architecture"
+INFO="Verify package architecture is $(rpm --eval %{_host_cpu})"
 describe "\${CMD}" "\${INFO}"
 $SALT_CALL $CMD --out json | bin/jsontest path=$HOST type=s contains=$(rpm --eval %{_host_cpu})
 assert_run
 
+
 # OS version (don't try that at home)
 CMD="grains.get osrelease"
-INFO="Verify OS release"
+INFO="Verify OS release is $VERSION_ID"
 describe "\${CMD}" "\${INFO}"
-$SALT_CALL $CMD --out json | bin/jsontest path=$HOST type=s contains=$(cat /etc/SuSE-release | sed ':a;N;$!ba;s/\n/ /g' | awk '{print $9"."$12}')
+$SALT_CALL $CMD --out json | bin/jsontest path=$HOST type=s contains=$VERSION_ID
 assert_run
 
 # OS release info
