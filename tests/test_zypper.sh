@@ -96,7 +96,7 @@ echo "$JSONOUT" | bin/jsontest path={"$HOST","test-package-zypper","summary"} \
 assert_run
 
 . /etc/os-release
-if [ ${VERSION%.*} -ge 12 ]; then
+if [ ${VERSION_ID%.*} -ge 12 ]; then
     # download only available since SLE12
 
     # download
