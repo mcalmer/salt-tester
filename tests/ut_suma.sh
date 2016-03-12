@@ -33,7 +33,7 @@ function ut_collect_sources {
     fi
 
     # Get patches first
-    for p_file in $(rpmspec -P $SRC/SPECS/salt.spec | grep -i '^patch' | awk '{print $2}'); do
+    for p_file in $(cat $SRC/SPECS/salt.spec | grep -i '^patch' | awk '{print $2}'); do
 	if [ ! -f "$SRC/SOURCES/$p_file" ]; then
 	    msg="Missing patch: $p_file"
 	    skip_tests "\${msg}"
@@ -44,8 +44,17 @@ function ut_collect_sources {
     done
 
     # Find sources
-    for s_file in $(rpmspec -P $SRC/SPECS/salt.spec | grep -i '^source' | awk '{print $2}'); do
+    if [ -e /usr/bin/rpmspec ]; then
+        SPECREADER="rpmspec -P"
+    else
+        SPECREADER="cat"
+    fi
+    name_version=$(rpm -q --qf "%{name}-%{version}\n" --specfile $SRC/SPECS/salt.spec | head -1)
+    for s_file in $($SPECREADER $SRC/SPECS/salt.spec | grep -i '^source' | awk '{print $2}'); do
 	s_file=$(echo $s_file | sed -e 's/.*\///g')
+	if $(echo $s_file | grep -F '%{name}-%{version}' >/dev/null); then
+            s_file=$(echo $s_file | sed "s/%{name}-%{version}/$name_version/")
+        fi
 	if [ ! -f "$SRC/SOURCES/$s_file" ]; then
 	    msg="Missing source file: $s_file"
 	    skip_tests "\${msg}"
