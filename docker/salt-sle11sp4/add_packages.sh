@@ -9,7 +9,7 @@ zypper -n in  --no-recommends iproute2 \
                               python \
                               cron \
                               sysconfig \
-                              python-pyOpenSSL \
+                              python-openssl \
                               postfix \
                               psmisc \
                               udev \
@@ -22,7 +22,6 @@ zypper -n in  --no-recommends iproute2 \
                               bind-utils
 
 # required for unit tests install with recommends
-zypper -n in quilt
-#zypper -n in quilt rpm-build
+zypper -n in quilt tar
 
 zypper -n in vim less
