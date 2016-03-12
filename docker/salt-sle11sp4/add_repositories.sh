@@ -1,18 +1,13 @@
 #!/bin/bash
 set -e
 
-zypper ar -f http://download.suse.de/ibs/SUSE:/SLE-11:/GA/standard "SLE11 GA"
-zypper ar -f http://download.suse.de/ibs/SUSE:/SLE-11:/Update/standard/ "SLE11 Updates"
-zypper ar -f http://download.suse.de/ibs/SUSE:/SLE-11-SP1:/GA/standard "SLE11 SP1 GA"
-zypper ar -f http://download.suse.de/ibs/SUSE:/SLE-11-SP1:/Update/standard "SLE11 SP1 Updates"
-zypper ar -f http://download.suse.de/ibs/SUSE:/SLE-11-SP2:/GA/standard "SLE11 SP2 GA"
-zypper ar -f http://download.suse.de/ibs/SUSE:/SLE-11-SP2:/Update/standard "SLE11 SP2 Updates"
-zypper ar -f http://download.suse.de/ibs/SUSE:/SLE-11-SP3:/GA/standard "SLE11 SP3 GA"
-zypper ar -f http://download.suse.de/ibs/SUSE:/SLE-11-SP3:/Update/standard "SLE11 SP3 Updates"
-zypper ar -f http://download.suse.de/ibs/SUSE:/SLE-11-SP4:/GA/standard "SLE11 SP4 GA"
-zypper ar -f http://download.suse.de/ibs/SUSE:/SLE-11-SP4:/Update/standard "SLE11 SP4 Updates"
+zypper ar -f 'http://nu.novell.com/repo/$RCE/SLES11-SP4-Pool/sle-11-x86_64/' "SLES11 SP4 Pool"
+zypper ar -f 'http://nu.novell.com/repo/$RCE/SLES11-SP4-Updates/sle-11-x86_64/' "SLES11 SP4 Updates"
+zypper ar -f 'http://nu.novell.com/repo/$RCE/SLE11-SDK-SP4-Pool/sle-11-x86_64' "SLE-SDK11 SP4 Pool"
+zypper ar -f 'http://nu.novell.com/repo/$RCE/SLE11-SDK-SP4-Updates/sle-11-x86_64' "SLE-SDK11 SP4 Updates"
 
 zypper ar -f http://download.opensuse.org/repositories/systemsmanagement:/saltstack/SLE_11_SP4/ "salt"
 zypper ar -f http://download.opensuse.org/repositories/systemsmanagement:/saltstack:/testing/SLE_11_SP4/ "salt_testing"
-zypper ar -f http://download.opensuse.org/repositories/systemsmanagement:/saltstack:/testing:/testpackages/SLE_11_SP4/ "salt_testing_pkg"
+zypper ar -f http://download.opensuse.org/repositories/systemsmanagement:/saltstack:/testing:/testpackages/SLE_11_SP4/ "testpackages"
 
+zypper mr -p 98 salt_testing

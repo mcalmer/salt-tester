@@ -95,13 +95,18 @@ echo "$JSONOUT" | bin/jsontest path={"$HOST","test-package-zypper","summary"} \
     type=s value="Test package for Salt's pkg.latest"
 assert_run
 
-# download
-CMD="pkg.download test-package"
-INFO="Test download"
-describe "\${CMD}" "\${INFO}"
-$SALT_CALL $CMD --out json | bin/jsontest path={"$HOST","test-package","repository-alias"} \
-    type=s value="salt"
-assert_run
+. /etc/os-release
+if [ ${VERSION_ID%.*} -ge 12 ]; then
+    # download only available since SLE12
+
+    # download
+    CMD="pkg.download test-package"
+    INFO="Test download"
+    describe "\${CMD}" "\${INFO}"
+    $SALT_CALL $CMD --out json | bin/jsontest path={"$HOST","test-package","repository-alias"} \
+        type=s value="salt"
+    assert_run
+fi
 
 # remove pkg
 CMD="pkg.remove test-package"

@@ -28,6 +28,14 @@ version_test '0.2-1.0' '0.2-1' '1'
 version_test '0.2.0-1' '0.2-1' '1'
 version_test '0.2-1' '1:0.2-1' '-1'
 version_test '1:0.2-1' '0.2-1' '1'
-version_test '0.2-1' '0.2~beta1-1' '1'
-version_test '0.2~beta2-1' '0.2-1' '-1'
+
+. /etc/os-release
+if [ ${VERSION_ID%.*} -ge 12 ]; then
+    # ~ has a special meaning since SLE12
+    version_test '0.2-1' '0.2~beta1-1' '1'
+    version_test '0.2~beta2-1' '0.2-1' '-1'
+else
+    version_test '0.2-1' '0.2~beta1-1' '-1'
+    version_test '0.2~beta2-1' '0.2-1' '1'
+fi
 
