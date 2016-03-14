@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+# Use your credentials for the 'nu.novell' domain within the URL, in case required
 zypper ar -f http://nu.novell.com/SUSE/Products/SLE-SERVER/12-SP1/x86_64/product/ "SLES 12 SP1 Pool"
 zypper ar -f http://nu.novell.com/SUSE/Updates/SLE-SERVER/12-SP1/x86_64/update/ "SLES 12 SP1 Updates"
 zypper ar -f http://nu.novell.com/SUSE/Products/SLE-SDK/12-SP1/x86_64/product/ "SLE-SDK 12 SP1 Pool"
