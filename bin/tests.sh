@@ -56,5 +56,6 @@ for TEST_CASE in $(cat etc/progression | grep -v '^#'); do
     fi
 done
 
+echo -e "\nLast change log entry of the Salt package:\n$(bin/lastchangelog salt 1)\n"
 cat etc/success
 
