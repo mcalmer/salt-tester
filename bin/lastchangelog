@@ -9,6 +9,12 @@ import os
 import sys
 import time
 
+def has_rpm():
+    '''
+    Is RPM around?
+    '''
+    return not not os.popen('which rpm').read().strip()
+
 
 def usage():
     '''
@@ -52,6 +58,10 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         usage()
     else:
+        if not has_rpm():
+            print >> sys.stderr, 'This tool is useful only on RPM-operated systems.'
+            sys.exit(1)
+
         sys.argv.append(1)
         package_name, num_logs = sys.argv[1:3]
         print >> sys.stdout, "-" * 40
