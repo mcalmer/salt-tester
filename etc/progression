@@ -1,5 +1,6 @@
 # test_installed_components.sh
 test_ping.sh
+test_component_configuration.sh
 test_grains.sh
 test_pkg_list.sh
 ut_suma.sh
