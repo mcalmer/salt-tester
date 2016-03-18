@@ -31,8 +31,7 @@ def changelog_tail(pkg_nm, nm_logs):
     chunks = list()
     chunk = list()
     for st_line in os.popen("rpm -q --changelog {packagename}".format(packagename=pkg_nm)).read().split(os.linesep):
-        st_line = st_line.strip()
-        if not st_line:
+        if not st_line.strip():
             continue
         if st_line.startswith('*'):
             st_line = st_line.split(" ")
