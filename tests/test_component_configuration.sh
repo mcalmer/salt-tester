@@ -26,5 +26,8 @@ assert_run
 
 # Test the Master and Minion are *operating* with the hash type set to SHA256
 # NOTE: This comes from the local instance configuration, which is created manually
+CMD="SHA256 is in use"
+INFO="salt-key returns a fingerprint in SHA256 hash type"
+describe "\${CMD}" "\${INFO}"
 salt-key -c $SALT_ROOT -f $HOST --output json | bin/jsontest path={"minions","$HOST"} type=s length=95
 assert_run
