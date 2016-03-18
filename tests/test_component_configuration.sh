@@ -12,7 +12,7 @@ CMD="configuration in the $SHIPPED_MASTER_CONFIG"
 INFO="SHA256 explicitly set for the Master"
 describe "\${CMD}" "\${INFO}"
 
-[ $(cat $SHIPPED_MASTER_CONFIG | grep -v '^#' | grep hash_type | awk '{print $2}') == "sha25" ]
+[ $(cat $SHIPPED_MASTER_CONFIG | grep -v '^#' | grep hash_type | awk '{print $2}') == "sha256" ]
 assert_run
 
 # Minion
@@ -20,5 +20,5 @@ CMD="configuration in the $SHIPPED_MINION_CONFIG"
 INFO="SHA256 explicitly set for the Minion"
 describe "\${CMD}" "\${INFO}"
 
-[ $(cat $SHIPPED_MINION_CONFIG | grep -v '^#' | grep hash_type | awk '{print $2}') == "sha25" ]
+[ $(cat $SHIPPED_MINION_CONFIG | grep -v '^#' | grep hash_type | awk '{print $2}') == "sha256" ]
 assert_run
