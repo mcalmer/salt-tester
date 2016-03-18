@@ -16,6 +16,7 @@ pidfile: $SALT_ROOT/run/salt-master.pid
 root_dir: $SALT_ROOT
 pki_dir: $SALT_ROOT/pki/
 cachedir: $SALT_ROOT/cache/
+hash_type: sha256
 EOF
 
 cat <<EOF > $SALT_ROOT/minion
@@ -25,6 +26,7 @@ pidfile: $SALT_ROOT/run/salt-minion.pid
 root_dir: $SALT_ROOT
 pki_dir: $SALT_ROOT/pki/
 cachedir: $SALT_ROOT/cache/
+hash_type: sha256
 EOF
 
 salt-master -c $SALT_ROOT -d
