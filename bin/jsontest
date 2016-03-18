@@ -86,13 +86,17 @@ class JSONTester(object):
                     assert (value or '').find(self.directives['contains']) > -1
                 elif self.directives.get('matches'):
                     assert re.match(self.directives['matches'], value)
+                elif self.directives.get('length'):
+                    assert len(value) == self.directives['length']
+                else:
+                    assert value == self.directives['value']
             else:
                 assert value == self.directives['value']
         except AssertionError as err:
             self._error("Object '{0}' is of {1} but does not "
                         "have expected value '{2}', containing '{3}' instead)".format(
                 self.directives['path'][-1], self.typedescr[self.directives['type']],
-                self.directives.get('value') or self.directives.get('contains') or self.directives.get('matches'), obj)
+                self.directives.get('value') or self.directives.get('contains') or self.directives.get('matches') or self.directives.get('length'), obj)
             )
 
 
@@ -129,6 +133,12 @@ def get_directives():
             dirmap[key].append(value)
         elif key == 'type':
             dirmap[key] = types.get(value)
+        elif key == 'length':
+            try:
+                dirmap[key] = int(value)
+            except ValueError as error:
+                print >> sys.stderr, "CLI error: the value expected to be a number, not '{value}'.".format(value=value)
+                sys.exit(1)
         else:
             try:
                 dirmap[key] = dirmap['type'](value)
@@ -150,11 +160,13 @@ Directives:
 \ttype\tType of the value: (b)ool, (i)nt, (f)loat, (s)tring, (l)ist
 \tvalue\tValue of the target object
 \tcontains\tContains a value
+\tlength\tIs a length of NN
 
 Example:
 \tpath={"foo","bar"} type=b value=true
 \tpath={"tea","cup"} type=i value=1
 \tpath={"my","list"} type=l contains=something
+\tpath={"foo","bar"} type=s length=10
 """
 
 
